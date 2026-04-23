@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creator Profile - Agim Pratama Besa</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_new.css') }}">
+    <!-- Add FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Add favicon -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <!-- Theme System: Tambahkan di semua halaman HTML sebelum </head> -->
+    <!-- Theme System CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dark-mode.css') }}">
+    <!-- Inisialisasi Tema Langsung - Mencegah Flash -->
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const isDark = savedTheme === 'dark' || (savedTheme === null && prefersDark);
+
+            // Terapkan tema langsung tanpa transisi
+            if (isDark) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                document.documentElement.classList.add('dark-theme');
+                document.body.classList.add('dark-mode');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
+</head>
+
+<body>
+    <!-- This HTML structure should be added to all your pages (index.html, about.html, creator_profiles.html) -->
+
+    <!-- Navbar with mobile menu toggle -->
+    <div class="navbar">
+        <div class="container">
+            <div class="logo-container">
+                <div class="logo">
+                    <i class="fas fa-lungs"></i>
+                    <h1>Pulmonary<span>Detect</span></h1>
+                </div>
+                <button id="mobile-menu-toggle" class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <div class="nav-links">
+                <a href="/" class="active">Home</a>
+                <a href="/announce">Research</a>
+                <a href="/about">About</a>
+                <div class="theme-toggle">
+                    <input type="checkbox" id="darkModeToggle" class="theme-checkbox">
+                    <label for="darkModeToggle" class="theme-label">
+                        <i class="fas fa-moon"></i>
+                        <i class="fas fa-sun"></i>
+                        <div class="toggle-ball"></div>
+                    </label>
+                </div>
+                <a href="/creator_profiles">
+                    <button class="profile-btn">Creator Profile</button>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Sidebar -->
+    <div id="sidebar-overlay" class="sidebar-overlay"></div>
+    <div id="mobile-sidebar" class="mobile-sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class="fas fa-lungs"></i>
+                <h1>Pulmonary<span>Detect</span></h1>
+            </div>
+            <button id="sidebar-close" class="sidebar-close">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="sidebar-nav">
+            <a href="/"><i class="fas fa-home"></i> Home</a>
+            <a href="/announce"><i class="fas fa-bullhorn"></i> Research</a>
+            <a href="/about"><i class="fas fa-info-circle"></i> About</a>
+            <div class="sidebar-theme-toggle">
+                <div class="theme-toggle">
+                    <input type="checkbox" id="darkModeToggleMobile" class="theme-checkbox">
+                    <label for="darkModeToggleMobile" class="theme-label">
+                        <i class="fas fa-moon"></i>
+                        <i class="fas fa-sun"></i>
+                        <div class="toggle-ball"></div>
+                    </label>
+                </div>
+            </div>
+            <a href="/creator_profiles" class="sidebar-profile-btn">
+                <i class="fas fa-user"></i> Creator Profile
+            </a>
+        </div>
+    </div>
+
+    <!-- ...existing code... -->
+
+    <div class="hero-section about-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Creator Profile</h1>
+                <p>Learn more about Agim Pratama Besa, the AI researcher behind PulmonaryDetect</p>
+            </div>
+            <div class="hero-image">
+                <div class="shield-container">
+                    <img src="{{ url_for('static', filename='images/lungs-icon3.png') }}" alt="Lung Icon"
+                        class="lung-icon">
+                    <div class="shield-outline"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="container main-content">
+            <div class="profile-section">
+                <div class="section-header">
+                    <h2>About the Creator</h2>
+                </div>
+                <div class="card-container">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="profile-photo">
+                                <img src="{{ url_for('static', filename='images/profile.jpg') }}"
+                                    alt="Agim Pratama Besa" class="profile-image">
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <h3>Agim Pratama Besa</h3>
+                            <p><strong>NIM:</strong> 20210302017</p>
+                            <p><strong>Jurusan:</strong> Teknik Informatika</p>
+                            <p><strong>Kampus:</strong> STMIK Bina Mulia Palu</p>
+                            <p><strong>Email:</strong> <a
+                                    href="mailto:agimpratamazte@gmail.com">agimpratamazte@gmail.com</a></p>
+                            <p><strong>No Telepon:</strong> +62 (822) 5967-1573</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-lungs"></i>
+                    <h2>PulmonaryDetect</h2>
+                    <p>Advancing pulmonary diagnostics through AI</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/announce">Research</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 PulmonaryDetect. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Add this before the closing </body> tag -->
+    <script src="{{ url_for('static', filename='js/script_new.js') }}"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Initialize dark mode toggle
+            initThemeToggle();
+
+            // Check for saved theme preference right away
+            const savedTheme = localStorage.getItem("theme");
+            const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+            if (savedTheme === "dark" || (savedTheme === null && prefersDark)) {
+                document.body.classList.add("dark-mode");
+                if (document.getElementById("darkModeToggle")) {
+                    document.getElementById("darkModeToggle").checked = true;
+                }
+
+                // Apply dark mode styles to creator profile card
+                document.querySelectorAll(".card").forEach(el => {
+                    if (el) el.style.backgroundColor = "#18191a";
+                });
+            }
+        });
+    </script>
+    <script>
+        // Restore body opacity after page has loaded
+        document.addEventListener("DOMContentLoaded", function () {
+            // Remove opacity restriction
+            document.body.style.opacity = "1";
+
+            // Apply correct theme class to body immediately
+            const isDark = document.documentElement.classList.contains("dark-theme");
+            if (isDark) {
+                document.body.classList.add("dark-mode");
+                const toggle = document.getElementById("darkModeToggle");
+                if (toggle) toggle.checked = true;
+            }
+        });
+    </script>
+    <script>
+        // Failsafe to ensure themes are correctly applied
+        (function () {
+            // Function to fix any theme inconsistencies
+            function fixThemeState() {
+                const htmlHasDarkTheme = document.documentElement.classList.contains('dark-theme');
+                const bodyHasDarkMode = document.body.classList.contains('dark-mode');
+                const toggle = document.getElementById('darkModeToggle');
+
+                // If there's a mismatch, fix it
+                if (htmlHasDarkTheme !== bodyHasDarkMode) {
+                    console.log('Fixing theme mismatch');
+                    if (htmlHasDarkTheme) {
+                        document.body.classList.add('dark-mode');
+                        if (toggle) toggle.checked = true;
+                    } else {
+                        document.body.classList.remove('dark-mode');
+                        if (toggle) toggle.checked = false;
+                    }
+                }
+            }
+
+            // Run immediately and again after DOM is fully loaded
+            fixThemeState();
+            window.addEventListener('DOMContentLoaded', fixThemeState);
+
+            // Also run on page visibility change or focus (handles browser tab switching)
+            document.addEventListener('visibilitychange', fixThemeState);
+            window.addEventListener('focus', fixThemeState);
+        })();
+    </script>
+    <script>
+        // Theme troubleshooter that specifically fixes navbar issues
+        (function () {
+            function fixNavbar() {
+                // Get the current theme state
+                const isDarkTheme = document.documentElement.classList.contains('dark-theme');
+                const navbars = document.querySelectorAll('.navbar');
+
+                // Always remove any direct style attributes from navbar
+                navbars.forEach(navbar => {
+                    navbar.removeAttribute('style');
+                });
+
+                // Force reflow to ensure styles are recalculated
+                document.body.offsetHeight;
+            }
+
+            // Run on page load
+            document.addEventListener('DOMContentLoaded', fixNavbar);
+
+            // Also run whenever the theme toggle is clicked
+            const toggle = document.getElementById('darkModeToggle');
+            if (toggle) {
+                toggle.addEventListener('change', function () {
+                    // Small delay to ensure the theme has been updated
+                    setTimeout(fixNavbar, 10);
+                });
+            }
+
+            // Also run on visibility change (when returning to the tab)
+            document.addEventListener('visibilitychange', fixNavbar);
+        })();
+    </script>
+    <!-- Synchronize dark mode toggles -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Get both toggle checkboxes
+            const mainToggle = document.getElementById('darkModeToggle');
+            const mobileToggle = document.getElementById('darkModeToggleMobile');
+
+            if (mainToggle && mobileToggle) {
+                // Set initial state for mobile toggle based on main toggle
+                mobileToggle.checked = mainToggle.checked;
+
+                // Sync mobile toggle changes to main toggle
+                mobileToggle.addEventListener('change', function () {
+                    mainToggle.checked = this.checked;
+                    mainToggle.dispatchEvent(new Event('change'));
+                });
+            }
+        });
+    </script>
+
+    <!-- Add the sidebar navigation script -->
+    <script src="{{ url_for('static', filename='js/sidebar-nav.js') }}"></script>
+    <!-- Add this before the closing </body> tag in all your HTML files -->
+    <script src="{{ url_for('static', filename='js/spa-navigation.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/theme-manager.js') }}"></script>
+    <!-- Theme Manager Tanpa Flash -->
+    <script src="{{ url_for('static', filename='js/theme-manager-no-flash.js') }}"></script>
+</body>
+
+</html>

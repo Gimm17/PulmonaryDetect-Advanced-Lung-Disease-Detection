@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Announcement - PulmonaryDetect</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_new.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dark-mode.css') }}">
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const isDark = savedTheme === 'dark' || (savedTheme === null && prefersDark);
+
+            if (isDark) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                document.documentElement.classList.add('dark-theme');
+                document.body.classList.add('dark-mode');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
+    <style>
+        .notice-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.18);
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            border-radius: 999px;
+            padding: 0.6rem 1rem;
+            margin-bottom: 1.25rem;
+            font-weight: 600;
+        }
+
+        .notice-card {
+            background: white;
+            border-radius: 18px;
+            padding: 2rem;
+            box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
+            border-top: 5px solid #00a8b5;
+        }
+
+        .notice-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .notice-list li {
+            display: flex;
+            gap: 0.75rem;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            color: #475569;
+        }
+
+        .notice-list i {
+            color: #00a8b5;
+            margin-top: 0.2rem;
+        }
+
+        body.dark-mode .notice-card {
+            background: #18191a;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+        }
+
+        body.dark-mode .notice-list li,
+        body.dark-mode .notice-card p {
+            color: #cbd5e1;
+        }
+
+        body.dark-mode .notice-card h3,
+        body.dark-mode .notice-card h2 {
+            color: #f8fafc;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="container">
+            <div class="logo-container">
+                <div class="logo">
+                    <i class="fas fa-lungs"></i>
+                    <h1>Pulmonary<span>Detect</span></h1>
+                </div>
+                <button id="mobile-menu-toggle" class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="/announce" class="active">Research</a>
+                <a href="/about">About</a>
+                <div class="theme-toggle">
+                    <input type="checkbox" id="darkModeToggle" class="theme-checkbox">
+                    <label for="darkModeToggle" class="theme-label">
+                        <i class="fas fa-moon"></i>
+                        <i class="fas fa-sun"></i>
+                        <div class="toggle-ball"></div>
+                    </label>
+                </div>
+                <a href="/creator_profiles">
+                    <button class="profile-btn">Creator Profile</button>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div id="sidebar-overlay" class="sidebar-overlay"></div>
+    <div id="mobile-sidebar" class="mobile-sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class="fas fa-lungs"></i>
+                <h1>Pulmonary<span>Detect</span></h1>
+            </div>
+            <button id="sidebar-close" class="sidebar-close">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="sidebar-nav">
+            <a href="/"><i class="fas fa-home"></i> Home</a>
+            <a href="/announce" class="active"><i class="fas fa-bullhorn"></i> Research</a>
+            <a href="/about"><i class="fas fa-info-circle"></i> About</a>
+            <div class="sidebar-theme-toggle">
+                <div class="theme-toggle">
+                    <input type="checkbox" id="darkModeToggleMobile" class="theme-checkbox">
+                    <label for="darkModeToggleMobile" class="theme-label">
+                        <i class="fas fa-moon"></i>
+                        <i class="fas fa-sun"></i>
+                        <div class="toggle-ball"></div>
+                    </label>
+                </div>
+            </div>
+            <a href="/creator_profiles" class="sidebar-profile-btn">
+                <i class="fas fa-user"></i> Creator Profile
+            </a>
+        </div>
+    </div>
+
+    <div class="hero-section about-hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="notice-badge">
+                    <i class="fas fa-bullhorn"></i>
+                    <span>Research Announcement</span>
+                </div>
+                <h1>Penelitian Sedang Dalam Tahap Publikasi</h1>
+                <p>Publikasi penelitian dari website ini saat ini sedang diproses untuk menuju Sinta 2, sehingga file research belum ditampilkan pada menu navbar.</p>
+            </div>
+            <div class="hero-image">
+                <div class="shield-container">
+                    <img src="{{ url_for('static', filename='images/lungs-icon3.png') }}" alt="Lung Icon"
+                        class="lung-icon">
+                    <div class="shield-outline"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="container main-content">
+            <div class="section-header">
+                <i class="fas fa-file-signature"></i>
+                <h2>Status Penelitian</h2>
+                <p>Informasi singkat terkait ketersediaan dokumen penelitian pada website ini.</p>
+            </div>
+
+            <div class="notice-card">
+                <h3>Pengumuman</h3>
+                <p>Dokumen penelitian untuk sementara belum dapat diakses melalui website karena naskah sedang berada dalam tahap publikasi ke Sinta 2.</p>
+                <ul class="notice-list">
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <span>Menu <strong>Research</strong> sekarang diarahkan ke halaman pengumuman resmi di dalam website.</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <span>Konten penelitian akan ditampilkan kembali setelah proses publikasi selesai dan siap dipublikasikan secara terbuka.</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-check-circle"></i>
+                        <span>Pengunjung tetap dapat melihat informasi umum proyek melalui halaman <strong>Home</strong>, <strong>About</strong>, dan <strong>Creator Profile</strong>.</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-lungs"></i>
+                    <h2>PulmonaryDetect</h2>
+                    <p>Advancing pulmonary diagnostics through AI</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/announce">Research</a></li>
+                        <li><a href="/about">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-envelope"></i> agimpratamazte@gmail.com</p>
+                    <p><i class="fas fa-phone"></i> +62 (822) 5967-1573</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Kampus STMIK Bina Mulia Palu</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Lung Disease Detection Research Project. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script_new.js') }}"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.body.style.opacity = "1";
+
+            const isDark = document.documentElement.classList.contains("dark-theme");
+            if (isDark) {
+                document.body.classList.add("dark-mode");
+                const toggle = document.getElementById("darkModeToggle");
+                if (toggle) toggle.checked = true;
+            }
+        });
+    </script>
+    <script>
+        (function () {
+            function fixThemeState() {
+                const htmlHasDarkTheme = document.documentElement.classList.contains('dark-theme');
+                const bodyHasDarkMode = document.body.classList.contains('dark-mode');
+                const toggle = document.getElementById('darkModeToggle');
+
+                if (htmlHasDarkTheme !== bodyHasDarkMode) {
+                    if (htmlHasDarkTheme) {
+                        document.body.classList.add('dark-mode');
+                        if (toggle) toggle.checked = true;
+                    } else {
+                        document.body.classList.remove('dark-mode');
+                        if (toggle) toggle.checked = false;
+                    }
+                }
+            }
+
+            fixThemeState();
+            window.addEventListener('DOMContentLoaded', fixThemeState);
+            document.addEventListener('visibilitychange', fixThemeState);
+            window.addEventListener('focus', fixThemeState);
+        })();
+    </script>
+    <script>
+        (function () {
+            function fixNavbar() {
+                document.querySelectorAll('.navbar').forEach((navbar) => {
+                    navbar.removeAttribute('style');
+                });
+
+                document.body.offsetHeight;
+            }
+
+            document.addEventListener('DOMContentLoaded', fixNavbar);
+
+            const toggle = document.getElementById('darkModeToggle');
+            if (toggle) {
+                toggle.addEventListener('change', function () {
+                    setTimeout(fixNavbar, 10);
+                });
+            }
+
+            document.addEventListener('visibilitychange', fixNavbar);
+        })();
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const mainToggle = document.getElementById('darkModeToggle');
+            const mobileToggle = document.getElementById('darkModeToggleMobile');
+
+            if (mainToggle && mobileToggle) {
+                mobileToggle.checked = mainToggle.checked;
+
+                mobileToggle.addEventListener('change', function () {
+                    mainToggle.checked = this.checked;
+                    mainToggle.dispatchEvent(new Event('change'));
+                });
+            }
+        });
+    </script>
+    <script src="{{ url_for('static', filename='js/sidebar-nav.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/spa-navigation.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/theme-manager.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/theme-manager-no-flash.js') }}"></script>
+</body>
+
+</html>

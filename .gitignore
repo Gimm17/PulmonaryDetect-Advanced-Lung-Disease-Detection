@@ -1,0 +1,53 @@
+# Python
+__pycache__/
+*.pyc
+venv/
+env/
+.env
+
+# Backups and diffs
+BACKUP/
+*.diff
+*.bak
+*.old
+*backup*
+
+# Old templates
+templates/about.html
+templates/creator_profiles.html
+templates/debug_path.html
+templates/index.html
+templates/index_enchanhed.html
+templates/index_old.html
+templates/index_oldv2.html
+templates/index_v2.html
+templates/simple_teachable_test.html
+templates/test_model.html
+
+# Old CSS
+static/css/style.css
+static/css/style_livecam.css
+static/css/style_old.css
+static/css/style_oldv2.css
+static/css/style_v2.css
+
+# Old JS
+static/js/README_UPDATE_SPA-NAV.txt
+static/js/dark-mode.js
+static/js/script.js
+static/js/script_livecam.js
+static/js/script_old.js
+static/js/script_oldv2.js
+static/js/script_v2.js
+static/js/sidebar-nav1.js
+static/js/spa-navigation.js
+static/js/spa-navigationWAIT.js
+static/js/spa-navigationv2.js
+
+# Other
+test/
+uji_grafik/
+hasil_penelitian/
+static/uploads/
+static/images/save1/
+extract.py

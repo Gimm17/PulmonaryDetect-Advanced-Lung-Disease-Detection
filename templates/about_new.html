@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Lung Disease Detection System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_new.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Theme System: Tambahkan di semua halaman HTML sebelum </head> -->
+    <!-- Theme System CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dark-mode.css') }}">
+    <!-- Inisialisasi Tema Langsung - Mencegah Flash -->
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const isDark = savedTheme === 'dark' || (savedTheme === null && prefersDark);
+
+            // Terapkan tema langsung tanpa transisi
+            if (isDark) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                document.documentElement.classList.add('dark-theme');
+                document.body.classList.add('dark-mode');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
+</head>
+
+<body>
+    <!-- This HTML structure should be added to all your pages (index.html, about.html, creator_profiles.html) -->
+
+    <!-- Navbar with mobile menu toggle -->
+    <div class="navbar">
+        <div class="container">
+            <div class="logo-container">
+                <div class="logo">
+                    <i class="fas fa-lungs"></i>
+                    <h1>Pulmonary<span>Detect</span></h1>
+                </div>
+                <button id="mobile-menu-toggle" class="mobile-menu-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <div class="nav-links">
+                <a href="/" class="active">Home</a>
+                <a href="/announce">Research</a>
+                <a href="/about">About</a>
+                <div class="theme-toggle">
+                    <input type="checkbox" id="darkModeToggle" class="theme-checkbox">
+                    <label for="darkModeToggle" class="theme-label">
+                        <i class="fas fa-moon"></i>
+                        <i class="fas fa-sun"></i>
+                        <div class="toggle-ball"></div>
+                    </label>
+                </div>
+                <a href="/creator_profiles">
+                    <button class="profile-btn">Creator Profile</button>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Sidebar -->
+    <div id="sidebar-overlay" class="sidebar-overlay"></div>
+    <div id="mobile-sidebar" class="mobile-sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class="fas fa-lungs"></i>
+                <h1>Pulmonary<span>Detect</span></h1>
+            </div>
+            <button id="sidebar-close" class="sidebar-close">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="sidebar-nav">
+            <a href="/"><i class="fas fa-home"></i> Home</a>
+            <a href="/announce"><i class="fas fa-bullhorn"></i> Research</a>
+            <a href="/about"><i class="fas fa-info-circle"></i> About</a>
+            <div class="sidebar-theme-toggle">
+                <div class="theme-toggle">
+                    <input type="checkbox" id="darkModeToggleMobile" class="theme-checkbox">
+                    <label for="darkModeToggleMobile" class="theme-label">
+                        <i class="fas fa-moon"></i>
+                        <i class="fas fa-sun"></i>
+                        <div class="toggle-ball"></div>
+                    </label>
+                </div>
+            </div>
+            <a href="/creator_profiles" class="sidebar-profile-btn">
+                <i class="fas fa-user"></i> Creator Profile
+            </a>
+        </div>
+    </div>
+
+    <!-- ...existing code... -->
+
+    <div class="hero-section about-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>About Our Research</h1>
+                <p>Understanding the technology and research behind our lung disease detection system</p>
+            </div>
+            <div class="hero-image">
+                <div class="shield-container">
+                    <img src="{{ url_for('static', filename='images/lungs-icon3.png') }}" alt="Lung Icon"
+                        class="lung-icon">
+                    <div class="shield-outline"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="container main-content">
+            <!-- Research Purpose Section -->
+            <div class="about-section">
+                <div class="section-header">
+                    <i class="fas fa-lightbulb"></i>
+                    <h2>Purpose of This Research</h2>
+                    <p>Advancing diagnostic capabilities through AI and machine learning</p>
+                </div>
+                <div class="about-content">
+                    <div class="about-card">
+                        <h3>Research Goal</h3>
+                        <p>Our research aims to develop accurate, accessible AI-based diagnostic tools for lung
+                            diseases,
+                            focusing on pneumonia and tuberculosis detection from chest X-rays. By leveraging machine
+                            learning technology, we strive to create solutions that can assist healthcare professionals
+                            in
+                            underserved regions where radiological expertise may be limited.</p>
+                    </div>
+                    <div class="about-card">
+                        <h3>Clinical Significance</h3>
+                        <p>Lung diseases like pneumonia and tuberculosis affect millions globally, with early detection
+                            crucial for effective treatment. Our AI system offers rapid preliminary analysis,
+                            potentially
+                            speeding up diagnosis and improving patient outcomes, especially in resource-constrained
+                            settings where specialist radiologists are scarce.</p>
+                    </div>
+                    <div class="about-card">
+                        <h3>Technical Approach</h3>
+                        <p>We've utilized deep learning techniques through Google's Teachable Machine to create a
+                            classification model trained on thousands of labeled chest X-rays. The system analyzes
+                            radiographic patterns and provides confidence scores for different lung conditions, serving
+                            as a
+                            supplementary tool to assist healthcare providers.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Model Performance Section -->
+            <div class="model-metrics">
+                <div class="section-header">
+                    <i class="fas fa-chart-line"></i>
+                    <h2>Model Performance Metrics</h2>
+                    <p>Technical evaluation of our diagnostic AI system</p>
+                </div>
+
+                <div class="metrics-grid">
+                    <!-- Accuracy Section -->
+                    <div class="metrics-card">
+                        <h3><i class="fas fa-bullseye"></i> Accuracy</h3>
+                        <div class="chart-container">
+                            <img src="{{ url_for('static', filename='images/accuracy.png') }}"
+                                alt="Accuracy Curve" class="metrics-image">
+                        </div>
+                        <p>Training accuracy graph over epochs, showing model convergence approaching 99.51%.</p>
+                    </div>
+
+                    <!-- Loss Section -->
+                    <div class="metrics-card">
+                        <h3><i class="fas fa-chart-line"></i> Loss</h3>
+                        <div class="chart-container">
+                            <img src="{{ url_for('static', filename='images/loss.png') }}"
+                                alt="Loss Curve" class="metrics-image">
+                        </div>
+                        <p>Training loss graph demonstrating steady decrease during model optimization.</p>
+                    </div>
+
+                    <!-- Confusion Matrix Section -->
+                    <div class="metrics-card">
+                        <h3><i class="fas fa-table"></i> Confusion Matrix</h3>
+                        <div class="chart-container">
+                            <img src="{{ url_for('static', filename='images/confusion_matrix.png') }}"
+                                alt="Confusion Matrix" class="metrics-image">
+                        </div>
+                        <p>Matrix showing the accurate classification of Pneumonia and Tuberculosis cases with minimal false predictions.</p>
+                    </div>
+
+                    <!-- Precision and Recall Section -->
+                    <div class="metrics-card">
+                        <h3><i class="fas fa-balance-scale"></i> Precision & Recall</h3>
+                        <div class="chart-container">
+                            <img src="{{ url_for('static', filename='images/precision_recall.png') }}"
+                                alt="Precision and Recall Curve" class="metrics-image">
+                        </div>
+                        <p>Evaluation showing high macro-precision (99.51%) and macro-recall (99.51%), with macro-F1 score of 99.51%.</p>
+                    </div>
+
+                    <!-- ROC Curve Section -->
+                    <div class="metrics-card">
+                        <h3><i class="fas fa-chart-area"></i> ROC Curve</h3>
+                        <div class="chart-container">
+                            <img src="{{ url_for('static', filename='images/roc.png') }}" alt="ROC Curve"
+                                class="metrics-image">
+                        </div>
+                        <p>Receiver Operating Characteristic curve indicating excellent discriminative performance with ROC-AUC of 0.999994.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Research Methodology Section -->
+            <div class="methodology-section">
+                <div class="section-header">
+                    <i class="fas fa-microscope"></i>
+                    <h2>Research Methodology</h2>
+                    <p>Our approach to developing this AI diagnostic tool</p>
+                </div>
+                <div class="methodology-content">
+                    <div class="methodology-timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-icon">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h3>Data Collection</h3>
+                                <p>We collected over 3,000 labeled chest X-ray images from multiple public datasets,
+                                    ensuring diverse representation of normal cases, pneumonia, and tuberculosis.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-icon">
+                                <i class="fas fa-cogs"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h3>Data Preprocessing</h3>
+                                <p>Images were standardized, normalized, and augmented to increase model robustness,
+                                    with
+                                    careful preprocessing to preserve medical diagnostic features.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-icon">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h3>Model Training</h3>
+                                <p>Multiple deep learning architectures were evaluated, with convolutional neural
+                                    networks
+                                    showing the best performance for classifying radiographic patterns.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-icon">
+                                <i class="fas fa-vial"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h3>Validation & Testing</h3>
+                                <p>Models were validated using cross-validation techniques and tested on independent
+                                    datasets to ensure generalizability and minimize overfitting.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-icon">
+                                <i class="fas fa-desktop"></i>
+                            </div>
+                            <div class="timeline-content">
+                                <h3>Web Implementation</h3>
+                                <p>The best-performing model was exported and implemented in this web application using
+                                    TensorFlow.js and Teachable Machine for accessible deployment.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Future Work Section -->
+            <div class="future-section">
+                <div class="section-header">
+                    <i class="fas fa-rocket"></i>
+                    <h2>Future Directions</h2>
+                    <p>Next steps in our research journey</p>
+                </div>
+                <div class="future-content">
+                    <div class="future-card">
+                        <div class="future-icon">
+                            <i class="fas fa-expand-alt"></i>
+                        </div>
+                        <h3>Expanded Disease Coverage</h3>
+                        <p>Extending our model to detect additional lung conditions including lung cancer, COPD, and
+                            interstitial lung diseases.</p>
+                    </div>
+                    <div class="future-card">
+                        <div class="future-icon">
+                            <i class="fas fa-hospital-user"></i>
+                        </div>
+                        <h3>Clinical Validation</h3>
+                        <p>Conducting rigorous clinical trials to validate our system's performance in real-world
+                            healthcare
+                            settings.</p>
+                    </div>
+                    <div class="future-card">
+                        <div class="future-icon">
+                            <i class="fas fa-mobile-alt"></i>
+                        </div>
+                        <h3>Mobile Application</h3>
+                        <p>Developing lightweight mobile applications for offline use in remote areas with limited
+                            internet
+                            connectivity.</p>
+                    </div>
+                    <div class="future-card">
+                        <div class="future-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>Educational Integration</h3>
+                        <p>Creating training modules for medical students to learn radiographic pattern recognition with
+                            AI
+                            assistance.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Disclaimer Section -->
+            <div class="disclaimer-section">
+                <div class="disclaimer-content">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <h3>Research Disclaimer</h3>
+                    <p>This system is developed for research purposes and is not FDA/CE approved for clinical use. The
+                        AI
+                        predictions should not replace professional medical diagnosis, but rather serve as a
+                        supplementary
+                        tool to assist healthcare providers. Always consult qualified medical professionals for proper
+                        diagnosis and treatment decisions.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <i class="fas fa-lungs"></i>
+                    <h2>PulmonaryDetect</h2>
+                    <p>Advancing pulmonary diagnostics through AI</p>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/about">About</a></li>
+                        <li><a href="/announce">Research</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-envelope"></i> agimpratamazte@gmail.com</p>
+                    <p><i class="fas fa-phone"></i> +62 (822) 5967-1573</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Kampus STMIK Bina Mulia Palu</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Lung Disease Detection Research Project. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/script_new.js') }}"></script>
+    <script>
+        // Restore body opacity after page has loaded
+        document.addEventListener("DOMContentLoaded", function () {
+            // Remove opacity restriction
+            document.body.style.opacity = "1";
+
+            // Apply correct theme class to body immediately
+            const isDark = document.documentElement.classList.contains("dark-theme");
+            if (isDark) {
+                document.body.classList.add("dark-mode");
+                const toggle = document.getElementById("darkModeToggle");
+                if (toggle) toggle.checked = true;
+            }
+        });
+    </script>
+    <script>
+        // Failsafe to ensure themes are correctly applied
+        (function () {
+            // Function to fix any theme inconsistencies
+            function fixThemeState() {
+                const htmlHasDarkTheme = document.documentElement.classList.contains('dark-theme');
+                const bodyHasDarkMode = document.body.classList.contains('dark-mode');
+                const toggle = document.getElementById('darkModeToggle');
+
+                // If there's a mismatch, fix it
+                if (htmlHasDarkTheme !== bodyHasDarkMode) {
+                    console.log('Fixing theme mismatch');
+                    if (htmlHasDarkTheme) {
+                        document.body.classList.add('dark-mode');
+                        if (toggle) toggle.checked = true;
+                    } else {
+                        document.body.classList.remove('dark-mode');
+                        if (toggle) toggle.checked = false;
+                    }
+                }
+            }
+
+            // Run immediately and again after DOM is fully loaded
+            fixThemeState();
+            window.addEventListener('DOMContentLoaded', fixThemeState);
+
+            // Also run on page visibility change or focus (handles browser tab switching)
+            document.addEventListener('visibilitychange', fixThemeState);
+            window.addEventListener('focus', fixThemeState);
+        })();
+    </script>
+    <script>
+        // Theme troubleshooter that specifically fixes navbar issues
+        (function () {
+            function fixNavbar() {
+                // Get the current theme state
+                const isDarkTheme = document.documentElement.classList.contains('dark-theme');
+                const navbars = document.querySelectorAll('.navbar');
+
+                // Always remove any direct style attributes from navbar
+                navbars.forEach(navbar => {
+                    navbar.removeAttribute('style');
+                });
+
+                // Force reflow to ensure styles are recalculated
+                document.body.offsetHeight;
+            }
+
+            // Run on page load
+            document.addEventListener('DOMContentLoaded', fixNavbar);
+
+            // Also run whenever the theme toggle is clicked
+            const toggle = document.getElementById('darkModeToggle');
+            if (toggle) {
+                toggle.addEventListener('change', function () {
+                    // Small delay to ensure the theme has been updated
+                    setTimeout(fixNavbar, 10);
+                });
+            }
+
+            // Also run on visibility change (when returning to the tab)
+            document.addEventListener('visibilitychange', fixNavbar);
+        })();
+    </script>
+    <!-- Synchronize dark mode toggles -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Get both toggle checkboxes
+            const mainToggle = document.getElementById('darkModeToggle');
+            const mobileToggle = document.getElementById('darkModeToggleMobile');
+
+            if (mainToggle && mobileToggle) {
+                // Set initial state for mobile toggle based on main toggle
+                mobileToggle.checked = mainToggle.checked;
+
+                // Sync mobile toggle changes to main toggle
+                mobileToggle.addEventListener('change', function () {
+                    mainToggle.checked = this.checked;
+                    mainToggle.dispatchEvent(new Event('change'));
+                });
+            }
+        });
+    </script>
+
+    <!-- Add the sidebar navigation script -->
+    <script src="{{ url_for('static', filename='js/sidebar-nav.js') }}"></script>
+    <!-- Add this before the closing </body> tag in all your HTML files -->
+    <script src="{{ url_for('static', filename='js/spa-navigation.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/theme-manager.js') }}"></script>
+    <!-- Theme Manager Tanpa Flash -->
+    <script src="{{ url_for('static', filename='js/theme-manager-no-flash.js') }}"></script>
+</body>
+
+</html>

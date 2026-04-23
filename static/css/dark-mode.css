@@ -1,0 +1,315 @@
+/* Dark Mode Variables & Theme Implementation
+ * Provides a centralized system for handling dark mode styles
+ */
+
+:root {
+    /* Light Theme Colors (Default) */
+    --bg-primary: #f5f9fc;
+    --bg-secondary: #ffffff;
+    --bg-tertiary: #f8fafc;
+    --text-primary: #2d3748;
+    --text-secondary: #4a5568;
+    --text-muted: #64748b;
+    --border-color: #e2e8f0;
+    --accent-color: #00a8b5;
+    --accent-hover: #00848f;
+    --card-bg: #ffffff;
+    --card-border: #e2e8f0;
+    --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    --input-bg: #ffffff;
+    --placeholder-bg: #f8fafc;
+    --navbar-bg: #ffffff;
+    --footer-bg: #1e293b;
+    --footer-text: #e2e8f0;
+    --icon-bg: #e6f7f8;
+    --dragarea-border: #cbd5e0;
+    --sidebar-overlay: rgba(0, 0, 0, 0.5);
+    /* Fast Transitions */
+    --theme-transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* Dark Theme Colors */
+[data-theme="dark"],
+html.dark-theme {
+    --bg-primary: #242526;
+    --bg-secondary: #18191a;
+    --bg-tertiary: #3a3b3c;
+    --text-primary: #e2e8f0;
+    --text-secondary: #cbd5e0;
+    --text-muted: #a0aec0;
+    --border-color: #4a5568;
+    --accent-color: #00a8b5;
+    --accent-hover: #00c8d4;
+    --card-bg: #18191a;
+    --card-border: #4a5568;
+    --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    --input-bg: #3a3b3c;
+    --placeholder-bg: #3a3b3c;
+    --navbar-bg: #18191a;
+    --footer-bg: #0f172a;
+    --footer-text: #e2e8f0;
+    --icon-bg: rgba(0, 168, 181, 0.2);
+    --dragarea-border: #4a5568;
+    --sidebar-overlay: rgba(0, 0, 0, 0.7);
+}
+
+/* Core Element Styles */
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: var(--theme-transition);
+}
+
+/* Navbar */
+.navbar {
+    background-color: var(--navbar-bg);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: var(--theme-transition);
+}
+
+.navbar a {
+    color: var(--text-secondary);
+    transition: var(--theme-transition);
+}
+
+.navbar a:hover,
+.navbar a.active {
+    color: var(--accent-color);
+}
+
+/* Cards and Containers */
+.detection-modes,
+.info-card,
+.team-member,
+.results-section,
+.model-status,
+.research-info,
+.methodology-timeline .timeline-content,
+.future-card,
+.metrics-card,
+.about-card,
+.card {
+    background-color: var(--card-bg);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+    box-shadow: var(--card-shadow);
+    transition: var(--theme-transition);
+}
+
+/* Placeholder Areas */
+.placeholder-container,
+.drag-area {
+    background-color: var(--placeholder-bg);
+    color: var(--text-muted);
+    border-color: var(--dragarea-border);
+    transition: var(--theme-transition);
+}
+
+/* Headers and Text */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--text-primary);
+    transition: var(--theme-transition);
+}
+
+p,
+span {
+    color: var(--text-secondary);
+    transition: var(--theme-transition);
+}
+
+.section-header p,
+.card-body p,
+.info-card p,
+.research-content p {
+    color: var(--text-muted);
+}
+
+/* Icons and Special Elements */
+.card-icon {
+    background-color: var(--icon-bg);
+    transition: var(--theme-transition);
+}
+
+.team-member .member-role {
+    color: var(--accent-color);
+}
+
+/* Inputs and Interactive Elements */
+button,
+.upload-btn,
+.tab-btn {
+    transition: var(--theme-transition);
+}
+
+.tab-btn {
+    background-color: var(--bg-tertiary);
+    color: var(--text-muted);
+}
+
+.tab-btn.active {
+    background-color: var(--accent-color);
+    color: var(--bg-secondary);
+}
+
+input[type="text"],
+input[type="email"],
+select,
+.camera-select {
+    background-color: var(--input-bg);
+    color: var(--text-primary);
+    border-color: var(--border-color);
+    transition: var(--theme-transition);
+}
+
+/* Prediction Items */
+.prediction-item {
+    background-color: var(--bg-tertiary);
+    border-left-color: var(--accent-color);
+    transition: var(--theme-transition);
+}
+
+.prediction-item .class-name {
+    color: var(--text-primary);
+}
+
+.no-results {
+    background-color: var(--bg-tertiary);
+    color: var(--text-muted);
+}
+
+/* Footer */
+footer {
+    background-color: var(--footer-bg);
+    color: var(--footer-text);
+    transition: var(--theme-transition);
+}
+
+/* Mobile Sidebar */
+.mobile-sidebar {
+    background-color: var(--card-bg);
+    transition: var(--theme-transition);
+}
+
+.sidebar-nav a {
+    color: var(--text-primary);
+}
+
+.sidebar-nav a:hover,
+.sidebar-nav a.active {
+    background-color: var(--bg-tertiary);
+    color: var(--accent-color);
+}
+
+.sidebar-overlay {
+    background-color: var(--sidebar-overlay);
+}
+
+/* Prevent flash of unstyled content during theme switch */
+.theme-transition {
+    transition: none !important;
+}
+
+/* Additional styles to prevent flash */
+html,
+body {
+    transition: var(--theme-transition);
+}
+
+/* Dark Mode Toggle Styling */
+.theme-toggle {
+    position: relative;
+    margin: 0 10px;
+}
+
+.theme-checkbox {
+    opacity: 0;
+    position: absolute;
+}
+
+.theme-label {
+    background-color: #f1f5f9;
+    border-radius: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px;
+    position: relative;
+    height: 26px;
+    width: 50px;
+    transform: scale(1.2);
+}
+
+[data-theme="dark"] .theme-label,
+html.dark-theme .theme-label {
+    background-color: #4a5568;
+}
+
+.theme-label .fa-moon {
+    color: #f1c40f;
+    font-size: 14px;
+}
+
+.theme-label .fa-sun {
+    color: #f39c12;
+    font-size: 14px;
+}
+
+.theme-label .toggle-ball {
+    background-color: #fff;
+    border-radius: 50%;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    height: 22px;
+    width: 22px;
+    transform: translateX(0px);
+    transition: transform 0.2s ease;
+}
+
+.theme-checkbox:checked+.theme-label .toggle-ball {
+    transform: translateX(24px);
+}
+
+/* Specific Component Adjustments for Dark Mode */
+[data-theme="dark"] .drag-area,
+html.dark-theme .drag-area {
+    border-color: var(--dragarea-border);
+}
+
+[data-theme="dark"] .hero-section,
+html.dark-theme .hero-section {
+    background: linear-gradient(135deg, #005a62 0%, #004d41 100%);
+}
+
+[data-theme="dark"] .about-hero,
+html.dark-theme .about-hero {
+    background: linear-gradient(135deg, #005a62 0%, #003d35 100%);
+}
+
+/* Timeline adjustments for dark mode */
+[data-theme="dark"] .methodology-timeline::after,
+html.dark-theme .methodology-timeline::after {
+    background-color: var(--border-color);
+}
+
+[data-theme="dark"] .timeline-content::after,
+html.dark-theme .timeline-content::after {
+    background-color: var(--card-bg);
+}
+
+/* Disclaimer section in dark mode */
+[data-theme="dark"] .disclaimer-section,
+html.dark-theme .disclaimer-section {
+    background-color: rgba(245, 158, 11, 0.1);
+}
+
+[data-theme="dark"] .disclaimer-content p,
+html.dark-theme .disclaimer-content p {
+    color: #fbd38d;
+}
